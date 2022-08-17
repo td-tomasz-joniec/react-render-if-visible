@@ -19,6 +19,7 @@ type Props = {
   rootElementClass?: string
   /** E.g. 'span', 'tr'. Default = 'div' */
   placeholderElement?: string
+  placeholderElementHeight?: number
   placeholderElementClass?: string
   children: React.ReactNode
 }
@@ -32,6 +33,7 @@ const RenderIfVisible = ({
   rootElement = 'div',
   rootElementClass = '',
   placeholderElement = 'div',
+  placeholderElementHeight = 0
   placeholderElementClass = '',
   children,
 }: Props) => {
@@ -78,7 +80,7 @@ const RenderIfVisible = ({
     }
   }, [isVisible])
 
-  const placeholderStyle = { height: placeholderHeight.current }
+  const placeholderStyle = { height: placeholderElementHeight }
   const rootClasses = useMemo(
     () => `renderIfVisible ${rootElementClass}`,
     [rootElementClass]
